@@ -1,4 +1,4 @@
-function Greeter(greeting: string) {
+function Greeter(this: any, greeting: string) {
     this.greeting = greeting;
 }
 
@@ -6,7 +6,7 @@ Greeter.prototype.greet = function() {
     return "Hello, " + this.greeting;
 }
 
-let greeter = new Greeter("world");
+let greeter = new (Greeter as any)("world");
 
 let button = document.createElement('button');
 button.textContent = "Say Hello";

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -watch",
     "server": "lite-server",
-    "start": "npm run server | npm run watch"
+    "start": "concurrently \"npm run watch\" \"npm run server\" "
   },
   "author": "",
   "license": "ISC"
