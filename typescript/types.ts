@@ -30,18 +30,18 @@ enum Color {
     Blue = 2
 };
 let myColor: Color = Color.Blue;
-console.log(myColor);
+// console.log(myColor);
 
 let car: any = "BMW";
-console.log(car);
+// console.log(car);
 car = {brand: "BMW", series: 3},
-console.log(car);
+// console.log(car);
 
 // Functions
 function returnMyName():string {
     return myName;
 };
-console.log(returnMyName());
+// console.log(returnMyName());
 
 // Void
 function sayHello():void {
@@ -52,14 +52,14 @@ function sayHello():void {
 function multiply(value1:number, value2:number): number {
     return value1 * value2;
 };
-console.log(multiply(2,4));
+// console.log(multiply(2,4));
 
 // Function Types - like a function but not usable.
 let myMultiply: (val1:number,val2:number) => number;
 // myMultiply = sayHello;
 // myMultiply();
 myMultiply = multiply;
-console.log(myMultiply(5,2));
+// console.log(myMultiply(5,2));
 
 // Objects
 let userData:{name:string, age:number} = {
@@ -76,10 +76,11 @@ let userData:{name:string, age:number} = {
 let complexObject: {data: number[], output:(all: boolean) => number[]} = {
     data: [100, 3.99, 10],
     output: function(all: boolean):number[] {
-        return this.data;
+        if(all) return this.data;
+        else return [];
     }
 };
-console.log(complexObject.output(true));
+// console.log('Complex Object: ',complexObject.output(true));
 
 // Complex = {}
 // Type Alias
@@ -87,7 +88,8 @@ type Complex = {data: number[], output:(all: boolean) => number[]};
 let secondComplexObject: Complex = {
     data: [100, 3.99, 10],
     output: function(all: boolean):number[] {
-        return this.data;
+        if(all) return this.data;
+        else return [];
     }
 };
 
@@ -98,7 +100,7 @@ myRealRealAge = "27";
 // Check Types
 let finalValue = 30;
 if(typeof finalValue == "number") {
-    console.log("Final value is a number");
+    // console.log("Final value is a number");
 }
 
 // Never
@@ -129,4 +131,4 @@ let myself:{name: string, bankAccount:Bank, hobbies: string[]} = {
     hobbies: ['Programming', 'Video Games']
 };
 myself.bankAccount.deposit(3000);
-console.log(myself);
+// console.log(myself);

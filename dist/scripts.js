@@ -1,4 +1,20 @@
 "use strict";
+var behaviorName = 'Matt';
+var behaviorAge = 12;
+// behaviorAge = "12";
+// This will throw an error because 'somethingElse' is never used
+// function controlMe(isTrue:boolean, somethingElse: boolean)
+function controlMe(isTrue) {
+    var result;
+    result = -1;
+    if (isTrue) {
+        result = 12;
+    }
+    return result;
+}
+// Let & Const
+var variables = "Test";
+console.log(variables);
 function Greeter(greeting) {
     this.greeting = greeting;
 }
@@ -42,17 +58,16 @@ var Color;
 })(Color || (Color = {}));
 ;
 var myColor = Color.Blue;
-console.log(myColor);
+// console.log(myColor);
 var car = "BMW";
-console.log(car);
+// console.log(car);
 car = { brand: "BMW", series: 3 },
-    console.log(car);
-// Functions
-function returnMyName() {
-    return myName;
-}
-;
-console.log(returnMyName());
+    // console.log(car);
+    // Functions
+    function returnMyName() {
+        return myName;
+    };
+// console.log(returnMyName());
 // Void
 function sayHello() {
     console.log("Hello!");
@@ -63,13 +78,13 @@ function multiply(value1, value2) {
     return value1 * value2;
 }
 ;
-console.log(multiply(2, 4));
+// console.log(multiply(2,4));
 // Function Types - like a function but not usable.
 var myMultiply;
 // myMultiply = sayHello;
 // myMultiply();
 myMultiply = multiply;
-console.log(myMultiply(5, 2));
+// console.log(myMultiply(5,2));
 // Objects
 var userData = {
     name: "Matt",
@@ -83,14 +98,19 @@ var userData = {
 var complexObject = {
     data: [100, 3.99, 10],
     output: function (all) {
-        return this.data;
+        if (all)
+            return this.data;
+        else
+            return [];
     }
 };
-console.log(complexObject.output(true));
 var secondComplexObject = {
     data: [100, 3.99, 10],
     output: function (all) {
-        return this.data;
+        if (all)
+            return this.data;
+        else
+            return [];
     }
 };
 // Union Types
@@ -99,7 +119,7 @@ myRealRealAge = "27";
 // Check Types
 var finalValue = 30;
 if (typeof finalValue == "number") {
-    console.log("Final value is a number");
+    // console.log("Final value is a number");
 }
 // Never
 function neverReturns() {
@@ -124,4 +144,5 @@ var myself = {
     hobbies: ['Programming', 'Video Games']
 };
 myself.bankAccount.deposit(3000);
-console.log(myself);
+// console.log(myself);
+//# sourceMappingURL=scripts.js.map
