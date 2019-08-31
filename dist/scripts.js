@@ -12,6 +12,16 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var MyMath;
+(function (MyMath) {
+    // export namespace Circle {
+    var PI = 3.14;
+    function calcCircumference(diameter) {
+        return diameter * PI;
+    }
+    MyMath.calcCircumference = calcCircumference;
+    // }
+})(MyMath || (MyMath = {}));
 // Class
 var Person = /** @class */ (function () {
     function Person(name, username) {
@@ -154,10 +164,10 @@ var Car = /** @class */ (function () {
     return Car;
 }());
 var exerciseCar = new Car("BMW");
-exerciseCar.honk();
-console.log(exerciseCar.acceleration);
+// exerciseCar.honk();
+// console.log(exerciseCar.acceleration);
 exerciseCar.accelerate(20);
-console.log(exerciseCar.acceleration);
+// console.log(exerciseCar.acceleration);
 // Exercise 2 - Two objects, based on each other ...
 var BaseObject = /** @class */ (function () {
     function BaseObject() {
@@ -180,7 +190,7 @@ var Rectangle = /** @class */ (function (_super) {
 var rectangle = new Rectangle();
 rectangle.width = 5;
 rectangle.length = 2;
-console.log(rectangle.calcSize());
+// console.log(rectangle.calcSize());
 // Exercise 3 - Make sure to compile to ES5 (set the target in tsconfig.json)
 var AnotherPerson = /** @class */ (function () {
     function AnotherPerson() {
@@ -221,11 +231,11 @@ var AnotherPerson = /** @class */ (function () {
 //     configurable: true
 // });
 var anotherPerson = new AnotherPerson();
-console.log(anotherPerson.firstName);
+// console.log(anotherPerson.firstName);
 anotherPerson.firstName = "Ma";
-console.log(anotherPerson.firstName);
+// console.log(anotherPerson.firstName);
 anotherPerson.firstName = "Maximilian";
-console.log(anotherPerson.firstName);
+// console.log(anotherPerson.firstName);
 var behaviorName = 'Matt';
 var behaviorAge = 12;
 // behaviorAge = "12";
@@ -366,6 +376,32 @@ button.onclick = function () {
     alert(greeter.greet());
 };
 document.body.appendChild(button);
+var MyMath;
+(function (MyMath) {
+    function calcRectangle(width, length) {
+        return width * length;
+    }
+    MyMath.calcRectangle = calcRectangle;
+})(MyMath || (MyMath = {}));
+// Namespaces won't pollute the global scope
+// namespace MyMath {
+//     const PI = 3.14;
+//     export function calcCircumference(diameter: number) {
+//         return diameter * PI;
+//     }
+//     export function calcRectangle(width:number, length:number)       {
+//         return width * length;
+//     }
+// }
+/* Set and Aliase for a namespace that you want imported */
+// import CircleMath = MyMath.Circle;
+/* Reference namespace files - this helps load namespaces in order before they are used */
+/// <reference path="./circle-math.ts"/>
+/// <reference path="./rectangle-math.ts"/>
+var PI = 2.99;
+console.log(MyMath.calcRectangle(10, 33));
+console.log(MyMath.calcCircumference(3));
+console.log(PI);
 // String
 var myName = 'Matt';
 // myName = 28;

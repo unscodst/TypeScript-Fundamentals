@@ -136,10 +136,10 @@ class Car {
     }
 }
 const exerciseCar = new Car("BMW");
-exerciseCar.honk();
-console.log(exerciseCar.acceleration);
+// exerciseCar.honk();
+// console.log(exerciseCar.acceleration);
 exerciseCar.accelerate(20);
-console.log(exerciseCar.acceleration);
+// console.log(exerciseCar.acceleration);
  
 // Exercise 2 - Two objects, based on each other ...
 class BaseObject {
@@ -155,7 +155,7 @@ class Rectangle extends BaseObject {
 const rectangle = new Rectangle();
 rectangle.width = 5;
 rectangle.length = 2;
-console.log(rectangle.calcSize());
+// console.log(rectangle.calcSize());
  
 // Exercise 3 - Make sure to compile to ES5 (set the target in tsconfig.json)
 class AnotherPerson {
@@ -186,8 +186,8 @@ class AnotherPerson {
 //     configurable: true
 // });
 const anotherPerson = new AnotherPerson();
-console.log(anotherPerson.firstName);
+// console.log(anotherPerson.firstName);
 anotherPerson.firstName = "Ma";
-console.log(anotherPerson.firstName);
+// console.log(anotherPerson.firstName);
 anotherPerson.firstName = "Maximilian";
-console.log(anotherPerson.firstName);
+// console.log(anotherPerson.firstName);
