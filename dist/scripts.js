@@ -28,3 +28,4 @@ myRealAge = 27;
 // Array
 var hobbies = ["Cooking", "Sports"];
 console.log(hobbies[0]);
+console.log(typeof hobbies);
