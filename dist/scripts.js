@@ -1,4 +1,231 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+// Class
+var Person = /** @class */ (function () {
+    function Person(name, username) {
+        this.username = username;
+        this.type = "mammal";
+        this.age = 27;
+        this.name = name;
+    }
+    Person.prototype.printAge = function () {
+        console.log(this.age);
+        this.setType(this.type);
+    };
+    Person.prototype.setType = function (type) {
+        this.type = type;
+        console.log(this.type);
+    };
+    return Person;
+}());
+;
+var person = new Person('Max', 'max');
+// console.log(person);
+// person.printAge();
+// person.setType('Cool guy');
+// Inheritance
+var Jooje = /** @class */ (function (_super) {
+    __extends(Jooje, _super);
+    // name = "Max";
+    function Jooje(username) {
+        var _this = _super.call(this, "Jooje", username) || this;
+        _this.age = 21;
+        return _this;
+    }
+    return Jooje;
+}(Person));
+var joojy = new Jooje("Joojy");
+// console.log(joojy);
+var Plant = /** @class */ (function () {
+    function Plant() {
+        this._species = "Default";
+    }
+    Object.defineProperty(Plant.prototype, "species", {
+        get: function () {
+            return this._species;
+        },
+        set: function (value) {
+            if (value.length > 3)
+                this._species = value;
+            else
+                this._species = "Default";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Plant;
+}());
+var plant = new Plant();
+// console.log(plant.species);
+plant.species = "AB";
+// console.log(plant.species);
+plant.species = 'Green Plant';
+// console.log(plant.species);
+// Define Properties and Methods
+var Helpers = /** @class */ (function () {
+    function Helpers() {
+    }
+    Helpers.calcCircumference = function (diameter) {
+        return this.PI * diameter;
+    };
+    Helpers.PI = 3.14;
+    return Helpers;
+}());
+// console.log(2 * Helpers.PI);
+// console.log(Helpers.calcCircumference(5));
+// Abstract Classes
+var Project = /** @class */ (function () {
+    function Project() {
+        this.projectName = '';
+        this.budget = 0;
+    }
+    Project.prototype.calcBudget = function () {
+        return this.budget * 2;
+    };
+    return Project;
+}());
+var ITProject = /** @class */ (function (_super) {
+    __extends(ITProject, _super);
+    function ITProject() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ITProject.prototype.changeName = function (name) {
+        this.projectName = name;
+    };
+    return ITProject;
+}(Project));
+var newProject = new ITProject();
+// console.log(newProject);
+newProject.changeName('Super IT Project');
+// console.log(newProject);
+// Private Constructor & Singletons
+var OnlyOne = /** @class */ (function () {
+    function OnlyOne(name) {
+        this.name = name;
+    }
+    OnlyOne.getInstance = function () {
+        if (!OnlyOne.instance) {
+            OnlyOne.instance = new OnlyOne('The Only One');
+        }
+        return OnlyOne.instance;
+    };
+    return OnlyOne;
+}());
+// let wrong = new OnlyOne('The Only One');
+var right = OnlyOne.getInstance();
+// console.log(right.name);
+right.name = 'Something else';
+// console.log(right.name);
+// Readonly
+var readOnlyOne = /** @class */ (function () {
+    function readOnlyOne(name) {
+        this.name = "Read Only Name";
+        this.name = name;
+    }
+    return readOnlyOne;
+}());
+var readOne = readOnlyOne;
+// console.log(readOne);
+// Exercise 1 - How was your TypeScript Class?
+var Car = /** @class */ (function () {
+    function Car(name) {
+        this.acceleration = 0;
+        this.name = name;
+    }
+    Car.prototype.honk = function () {
+        console.log("Toooooooooot!");
+    };
+    ;
+    Car.prototype.accelerate = function (speed) {
+        this.acceleration = this.acceleration + speed;
+    };
+    return Car;
+}());
+var exerciseCar = new Car("BMW");
+exerciseCar.honk();
+console.log(exerciseCar.acceleration);
+exerciseCar.accelerate(20);
+console.log(exerciseCar.acceleration);
+// Exercise 2 - Two objects, based on each other ...
+var BaseObject = /** @class */ (function () {
+    function BaseObject() {
+        this.width = 0;
+        this.length = 0;
+    }
+    return BaseObject;
+}());
+;
+var Rectangle = /** @class */ (function (_super) {
+    __extends(Rectangle, _super);
+    function Rectangle() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Rectangle.prototype.calcSize = function () {
+        return this.width * this.length;
+    };
+    return Rectangle;
+}(BaseObject));
+var rectangle = new Rectangle();
+rectangle.width = 5;
+rectangle.length = 2;
+console.log(rectangle.calcSize());
+// Exercise 3 - Make sure to compile to ES5 (set the target in tsconfig.json)
+var AnotherPerson = /** @class */ (function () {
+    function AnotherPerson() {
+        this._firstName = "";
+        this.enumerable = true;
+        this.configurable = true;
+    }
+    Object.defineProperty(AnotherPerson.prototype, "firstName", {
+        get: function () {
+            return this._firstName;
+        },
+        set: function (value) {
+            if (value.length > 3)
+                this._firstName = value;
+            else
+                this._firstName = "";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ;
+    return AnotherPerson;
+}());
+;
+// Object.defineProperty(person, "firstName", {
+//     get: function () {
+//         return this._firstName;
+//     },
+//     set: function (value) {
+//         if (value.length > 3) {
+//             this._firstName = value;
+//         }
+//         else {
+//             this._firstName = "";
+//         }
+//     },
+//     enumerable: true,
+//     configurable: true
+// });
+var anotherPerson = new AnotherPerson();
+console.log(anotherPerson.firstName);
+anotherPerson.firstName = "Ma";
+console.log(anotherPerson.firstName);
+anotherPerson.firstName = "Maximilian";
+console.log(anotherPerson.firstName);
 var behaviorName = 'Matt';
 var behaviorAge = 12;
 // behaviorAge = "12";
@@ -39,7 +266,7 @@ var addNumbers = function (number1, number2) {
 var multiplyNumber = function (number1, number2) { return number1 * number2; };
 // console.log(multiplyNumber(6,4));
 var greet = function () {
-    console.log('Hello!!');
+    // console.log('Hello!!');
 };
 // greet();
 var greetFriend = function (friend) { return console.log(friend); };
@@ -52,7 +279,7 @@ var countDown = function (start) {
         start--;
     }
     ;
-    // console.log('Done!', start);
+    console.log('Done!', start);
 };
 // countDown(20);
 // Rest & Spread
@@ -81,7 +308,7 @@ function printInfo() {
 }
 // printInfo("Cat",5)
 // Destructuring Arrays
-console.log("Destructuring Arrays");
+// console.log("Destructuring Arrays");
 var myHobbies = ["Cooking", "Sports", "Games"];
 // const hobby1 = myHobbies[0];
 // const hobby2 = myHobbies[1];
@@ -102,30 +329,30 @@ var literalGreeting = "\n    This is a heading:\n    I'm " + userName + ",\n    
 // Exercise - Re-Write Code in ES6
 // Exercise 1 - Maybe use an Arrow Function?
 var double = function (value) { return value * 2; };
-console.log(double(10));
+// console.log(double(10));
 // Exercise 2 - If only we could provide some default values...
 var greetDefault = function (name) {
     if (name === void 0) { name = 'Max'; }
     console.log("Hello, " + name);
 };
-greetDefault();
-greetDefault("Anna");
+// greetDefault();
+// greetDefault("Anna");
 // Exercise 3 - Isn't there a shorter way to get all these Values?
 var numbersSpread = [-3, 33, 38, 5];
-console.log(Math.min.apply(Math, numbersSpread));
+// console.log(Math.min(...numbersSpread));
 // Exercise 4 - I have to think about Exercise 3 ...
 var newArray = [55, 20];
 newArray.push.apply(newArray, numbersSpread);
-console.log(newArray);
+// console.log(newArray);
 // Exercise 5 - That's a well-constructed array.
 var testResults = [3.89, 2.99, 1.38];
 var result1 = testResults[0], result2 = testResults[1], result3 = testResults[2];
-console.log(result1, result2, result3);
+// console.log(result1, result2, result3);
 // Exercise 6 - And a well-constructed object!
 var scientist = { firstName: "Will", experience: 12 };
 var firstName = scientist.firstName, experience = scientist.experience;
 // var experience = scientist.experience;
-console.log(firstName, experience);
+// console.log(firstName, experience);
 function Greeter(greeting) {
     this.greeting = greeting;
 }
