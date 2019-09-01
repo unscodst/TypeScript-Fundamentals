@@ -376,6 +376,40 @@ button.onclick = function () {
     alert(greeter.greet());
 };
 document.body.appendChild(button);
+System.register("math/circle", [], function (exports_1, context_1) {
+    "use strict";
+    var modulePI;
+    var __moduleName = context_1 && context_1.id;
+    function moduleCalcCircle(diameter) {
+        return diameter * modulePI;
+    }
+    exports_1("moduleCalcCircle", moduleCalcCircle);
+    return {
+        setters: [],
+        execute: function () {
+            exports_1("modulePI", modulePI = 3.14);
+        }
+    };
+});
+System.register("modules", ["math/circle"], function (exports_2, context_2) {
+    "use strict";
+    var circle_1;
+    var __moduleName = context_2 && context_2.id;
+    return {
+        setters: [
+            function (circle_1_1) {
+                circle_1 = circle_1_1;
+            }
+        ],
+        execute: function () {
+            // import {} from "./math/rectangle";
+            console.log('check');
+            console.log(circle_1.modulePI);
+            console.log(circle_1.moduleCalcCircle(10));
+            console.log('Working');
+        }
+    };
+});
 var MyMath;
 (function (MyMath) {
     function calcRectangle(width, length) {
@@ -399,9 +433,9 @@ var MyMath;
 /// <reference path="./circle-math.ts"/>
 /// <reference path="./rectangle-math.ts"/>
 var PI = 2.99;
-console.log(MyMath.calcRectangle(10, 33));
-console.log(MyMath.calcCircumference(3));
-console.log(PI);
+// console.log(MyMath.calcRectangle(10,33));
+// console.log(MyMath.calcCircumference(3));
+// console.log(PI);
 // String
 var myName = 'Matt';
 // myName = 28;
@@ -519,4 +553,17 @@ var myself = {
 };
 myself.bankAccount.deposit(3000);
 // console.log(myself);
+System.register("math/rectangle", [], function (exports_3, context_3) {
+    "use strict";
+    var __moduleName = context_3 && context_3.id;
+    function moduleCalcRect(width, length) {
+        return width * length;
+    }
+    exports_3("moduleCalcRect", moduleCalcRect);
+    return {
+        setters: [],
+        execute: function () {
+        }
+    };
+});
 //# sourceMappingURL=scripts.js.map

@@ -2,7 +2,7 @@
   "name": "typescript-fundamentals",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "scripts.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -watch",
@@ -10,5 +10,11 @@
     "start": "concurrently \"npm run watch\" \"npm run server\" "
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "2.5.4"
+  },
+  "dependencies": {
+    "systemjs": "^0.19.36"
+  }
 }

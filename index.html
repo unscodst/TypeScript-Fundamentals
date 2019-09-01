@@ -6,6 +6,18 @@
     <title>TypeScript</title>
 </head>
 <body>
-    <script src="./dist/scripts.js"></script>
+    <!-- <script src="./dist/scripts.js"></script> -->
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script>
+        SystemJS.config({
+            baseURL: './dist/',
+            packages: {
+                './dist/': {
+                    defaultExtension:'js'
+                }
+            }
+        });
+        SystemJS.import('scripts.js');
+    </script>
 </body>
 </html>

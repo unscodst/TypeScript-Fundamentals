@@ -19,6 +19,6 @@
 /// <reference path="./rectangle-math.ts"/>
 
 const PI = 2.99;
-console.log(MyMath.calcRectangle(10,33));
-console.log(MyMath.calcCircumference(3));
-console.log(PI);
+// console.log(MyMath.calcRectangle(10,33));
+// console.log(MyMath.calcCircumference(3));
+// console.log(PI);
