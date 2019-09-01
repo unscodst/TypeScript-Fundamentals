@@ -376,40 +376,13 @@ button.onclick = function () {
     alert(greeter.greet());
 };
 document.body.appendChild(button);
-System.register("math/circle", [], function (exports_1, context_1) {
-    "use strict";
-    var modulePI;
-    var __moduleName = context_1 && context_1.id;
-    function moduleCalcCircle(diameter) {
-        return diameter * modulePI;
-    }
-    exports_1("moduleCalcCircle", moduleCalcCircle);
-    return {
-        setters: [],
-        execute: function () {
-            exports_1("modulePI", modulePI = 3.14);
-        }
-    };
-});
-System.register("modules", ["math/circle"], function (exports_2, context_2) {
-    "use strict";
-    var circle_1;
-    var __moduleName = context_2 && context_2.id;
-    return {
-        setters: [
-            function (circle_1_1) {
-                circle_1 = circle_1_1;
-            }
-        ],
-        execute: function () {
-            // import {} from "./math/rectangle";
-            console.log('check');
-            console.log(circle_1.modulePI);
-            console.log(circle_1.moduleCalcCircle(10));
-            console.log('Working');
-        }
-    };
-});
+// import * as Circle from "./math/circle";
+// import Rectangle from "./math/rectangle";
+// console.log('check');
+// console.log(Circle.modulePI);
+// console.log(Circle.moduleCalcCircle(10));
+// console.log(Rectangle(10,50));
+// console.log('Working');
 var MyMath;
 (function (MyMath) {
     function calcRectangle(width, length) {
@@ -553,17 +526,11 @@ var myself = {
 };
 myself.bankAccount.deposit(3000);
 // console.log(myself);
-System.register("math/rectangle", [], function (exports_3, context_3) {
-    "use strict";
-    var __moduleName = context_3 && context_3.id;
-    function moduleCalcRect(width, length) {
-        return width * length;
-    }
-    exports_3("moduleCalcRect", moduleCalcRect);
-    return {
-        setters: [],
-        execute: function () {
-        }
-    };
-});
+// export const modulePI = 3.14;
+// export function moduleCalcCircle(diameter:number) {
+//     return diameter * modulePI;
+// }
+// export default function moduleCalcRect(width:number, length: number) {
+//     return width * length
+// }
 //# sourceMappingURL=scripts.js.map
