@@ -51,7 +51,7 @@ let myDoubleFunction: DoubleValueFunction;
 myDoubleFunction = function(value1:number, value2:number):number {
     return(value1 + value2) * 2;
 };
-console.log(myDoubleFunction(10,20));
+// console.log(myDoubleFunction(10,20));
 
 // Interface Inheritance
 
@@ -66,4 +66,4 @@ const olderPerson: AgedPerson = {
         console.log('Hello, ' + lastName);
     }
 };
-console.log(olderPerson);
+// console.log(olderPerson);

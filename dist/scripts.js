@@ -363,6 +363,94 @@ var scientist = { firstName: "Will", experience: 12 };
 var firstName = scientist.firstName, experience = scientist.experience;
 // var experience = scientist.experience;
 // console.log(firstName, experience);
+// Simple Generic
+function echo(data) {
+    return data;
+}
+;
+// console.log(echo("Max"));
+// console.log(echo(27));
+// console.log(echo({name: "Matt", age: 27}));
+// Better Generic - with <T> TypeScript is aware of the return type.
+function betterEcho(data) {
+    return data;
+}
+// console.log(betterEcho("Max").length);
+// console.log(betterEcho<number>(27));
+// console.log(betterEcho({name: "Matt", age: 27}));
+// Built-In Generics
+var genericResults = [1.94, 2.33];
+genericResults.push(-2.99);
+// console.log(testResults);
+// Arrays
+function printAll(args) {
+    args.forEach(function (element) { return console.log(element); });
+}
+// printAll<string>(['A','B']);
+// Generic Types
+var echo2 = echo;
+// console.log(echo2<string>('Something'));
+// Generic Classes with Constraints
+var SimpleMath = /** @class */ (function () {
+    function SimpleMath() {
+    }
+    SimpleMath.prototype.calculate = function () {
+        return +this.baseValue * +this.multiplyValue;
+    };
+    return SimpleMath;
+}());
+;
+var simpleMath = new SimpleMath();
+simpleMath.baseValue = "20";
+simpleMath.multiplyValue = 70;
+// console.log(simpleMath.calculate());
+// Exercise - Generic Map
+// setItem(key: string, item: T) {} // should create a new key-value pair
+// class MyMap<T extends number | string> {
+var MyMap = /** @class */ (function () {
+    function MyMap() {
+        // item: T;
+        // key: string;
+        // map:Array<{key: string, item: T}> = [];
+        this.map = {};
+    }
+    MyMap.prototype.setItem = function (key, item) {
+        // this.map.push({
+        //     key: key,
+        //     item: item
+        // })
+        this.map[key] = item;
+    };
+    ;
+    MyMap.prototype.getItem = function (key) {
+        // let keyIndex = this.map.filter(pair => pair.key === key);
+        // return this.map.filter(pair => pair.key === key);
+        return this.map[key];
+    };
+    ;
+    MyMap.prototype.clear = function () {
+        this.map = {};
+    };
+    MyMap.prototype.printMap = function () {
+        // this.map.forEach(pair => console.log(pair));
+        for (var key in this.map) {
+            console.log(key, this.map[key]);
+        }
+    };
+    return MyMap;
+}());
+// getItem(key: string) // should retrieve the value of the provided key
+// clear() // should remove all key-value pairs
+// printMap() // should output key-value pairs
+// Exercise - Generic Map Usable Code
+var numberMap = new MyMap();
+numberMap.setItem('apples', 5);
+numberMap.setItem('bananas', 10);
+numberMap.printMap();
+var stringMap = new MyMap();
+stringMap.setItem('name', "Max");
+stringMap.setItem('age', "27");
+stringMap.printMap();
 function Greeter(greeting) {
     this.greeting = greeting;
 }
@@ -411,7 +499,6 @@ var myDoubleFunction;
 myDoubleFunction = function (value1, value2) {
     return (value1 + value2) * 2;
 };
-console.log(myDoubleFunction(10, 20));
 var olderPerson = {
     age: 37,
     firstName: 'Mae',
@@ -419,7 +506,7 @@ var olderPerson = {
         console.log('Hello, ' + lastName);
     }
 };
-console.log(olderPerson);
+// console.log(olderPerson);
 // import * as Circle from "./math/circle";
 // import Rectangle from "./math/rectangle";
 // console.log('check');
