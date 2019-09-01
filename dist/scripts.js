@@ -376,6 +376,50 @@ button.onclick = function () {
     alert(greeter.greet());
 };
 document.body.appendChild(button);
+function interfaceGreet(person) {
+    console.log("Hello, " + person.firstName);
+}
+function changeName(person) {
+    person.firstName = 'Jooje';
+}
+var constInterfacePerson = {
+    firstName: "Matt",
+    age: 27,
+    hobbies: ["Video Games", "Movies"],
+    greet: function (lastName) {
+        console.log('Hi, I am ' + this.firstName + " " + lastName);
+    }
+};
+// interfaceGreet(constInterfacePerson);
+changeName(constInterfacePerson);
+// interfaceGreet(constInterfacePerson);
+// constInterfacePerson.greet("Anything");
+var InterfacePersonClass = /** @class */ (function () {
+    function InterfacePersonClass() {
+    }
+    InterfacePersonClass.prototype.greet = function (lastName) {
+        console.log('Hi, I am ' + this.firstName + " " + lastName);
+    };
+    ;
+    return InterfacePersonClass;
+}());
+;
+var newInterfacePerson = new InterfacePersonClass();
+newInterfacePerson.firstName = 'Max';
+newInterfacePerson.lastName = 'New';
+var myDoubleFunction;
+myDoubleFunction = function (value1, value2) {
+    return (value1 + value2) * 2;
+};
+console.log(myDoubleFunction(10, 20));
+var olderPerson = {
+    age: 37,
+    firstName: 'Mae',
+    greet: function (lastName) {
+        console.log('Hello, ' + lastName);
+    }
+};
+console.log(olderPerson);
 // import * as Circle from "./math/circle";
 // import Rectangle from "./math/rectangle";
 // console.log('check');
