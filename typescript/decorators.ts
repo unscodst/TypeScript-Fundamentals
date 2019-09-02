@@ -85,9 +85,12 @@ const decoratorproject = new DecoratorProject("Decorator Project");
 
 // Parameter Decorator
 function parameterInfo(target:any, methodName:string, paramIndex: number) {
-    console.log("Target: ", target);
-    console.log("Method Name: ", methodName);
-    console.log("ParamIndex: ", paramIndex);
+    target = target;
+    methodName = methodName;
+    paramIndex = paramIndex;
+    // console.log("Target: ", target);
+    // console.log("Method Name: ", methodName);
+    // console.log("ParamIndex: ", paramIndex);
 }
 class Course {
     name: string;
@@ -101,5 +104,5 @@ class Course {
     };
 };
 const course = new Course("Super Course");
-course.printStudentNumbers("anything", true);
-course.printStudentNumbers("another", false); 
+// course.printStudentNumbers("anything", true);
+// course.printStudentNumbers("another", false); 

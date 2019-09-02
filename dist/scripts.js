@@ -351,9 +351,12 @@ var decoratorproject = new DecoratorProject("Decorator Project");
 // decoratorproject.calcBudget();
 // Parameter Decorator
 function parameterInfo(target, methodName, paramIndex) {
-    console.log("Target: ", target);
-    console.log("Method Name: ", methodName);
-    console.log("ParamIndex: ", paramIndex);
+    target = target;
+    methodName = methodName;
+    paramIndex = paramIndex;
+    // console.log("Target: ", target);
+    // console.log("Method Name: ", methodName);
+    // console.log("ParamIndex: ", paramIndex);
 }
 var Course = /** @class */ (function () {
     function Course(name) {
@@ -374,8 +377,8 @@ var Course = /** @class */ (function () {
 }());
 ;
 var course = new Course("Super Course");
-course.printStudentNumbers("anything", true);
-course.printStudentNumbers("another", false);
+// course.printStudentNumbers("anything", true);
+// course.printStudentNumbers("another", false); 
 // Let & Const
 var variable = "Test";
 // console.log(variable);
