@@ -12,6 +12,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var MyMath;
 (function (MyMath) {
     // export namespace Circle {
@@ -249,6 +258,124 @@ function controlMe(isTrue) {
     }
     return result;
 }
+// Class Decorator
+function logged(constructorFn) {
+    console.log(constructorFn);
+}
+;
+// @logged
+var DecoratorPerson = /** @class */ (function () {
+    function DecoratorPerson() {
+        console.log('Hi');
+    }
+    ;
+    return DecoratorPerson;
+}());
+;
+// Factory
+function logging(value) {
+    return value ? logged : function () { };
+}
+;
+var DecoratorCar = /** @class */ (function () {
+    function DecoratorCar() {
+        console.log('Inside Car Constructor');
+    }
+    DecoratorCar = __decorate([
+        logging(false)
+    ], DecoratorCar);
+    return DecoratorCar;
+}());
+// Advanced
+function decoratorPrintable(constructorFn) {
+    constructorFn.prototype.print = function () {
+        console.log(this);
+    };
+}
+;
+var DecoratorPlant = /** @class */ (function () {
+    function DecoratorPlant() {
+        this.name = "Green Decorator Plant";
+    }
+    DecoratorPlant = __decorate([
+        logging(false),
+        decoratorPrintable
+    ], DecoratorPlant);
+    return DecoratorPlant;
+}());
+;
+var decoratorplant = new DecoratorPlant();
+// (<any>decoratorplant).print();
+// Method Decorator & Property Decorator
+// Method
+function editable(value) {
+    return function (target, propertyName, descriptor) {
+        target = target;
+        propertyName = propertyName;
+        descriptor.writable = value;
+    };
+}
+// Property
+function overwritable(value) {
+    return function (target, propName) {
+        target = target;
+        propName = propName;
+        var newDescriptor = {
+            writable: value
+        };
+        return newDescriptor;
+    };
+}
+var DecoratorProject = /** @class */ (function () {
+    function DecoratorProject(name) {
+        this.projectName = name;
+    }
+    DecoratorProject.prototype.calcBudget = function () {
+        console.log(1000);
+    };
+    ;
+    __decorate([
+        overwritable(true)
+    ], DecoratorProject.prototype, "projectName", void 0);
+    __decorate([
+        editable(false)
+    ], DecoratorProject.prototype, "calcBudget", null);
+    return DecoratorProject;
+}());
+;
+var decoratorproject = new DecoratorProject("Decorator Project");
+// decoratorproject.calcBudget();
+// decoratorproject.calcBudget = function() {
+//     console.log(2000);
+// };
+// decoratorproject.calcBudget();
+// Parameter Decorator
+function parameterInfo(target, methodName, paramIndex) {
+    console.log("Target: ", target);
+    console.log("Method Name: ", methodName);
+    console.log("ParamIndex: ", paramIndex);
+}
+var Course = /** @class */ (function () {
+    function Course(name) {
+        this.name = name;
+    }
+    Course.prototype.printStudentNumbers = function (mode, printAll) {
+        mode;
+        if (printAll)
+            console.log(10000);
+        else
+            console.log(2000);
+    };
+    ;
+    __decorate([
+        __param(1, parameterInfo)
+    ], Course.prototype, "printStudentNumbers", null);
+    return Course;
+}());
+;
+var course = new Course("Super Course");
+course.printStudentNumbers("anything", true);
+course.printStudentNumbers("another", false);
 // Let & Const
 var variable = "Test";
 // console.log(variable);
@@ -446,11 +573,11 @@ var MyMap = /** @class */ (function () {
 var numberMap = new MyMap();
 numberMap.setItem('apples', 5);
 numberMap.setItem('bananas', 10);
-numberMap.printMap();
+// numberMap.printMap();
 var stringMap = new MyMap();
 stringMap.setItem('name', "Max");
 stringMap.setItem('age', "27");
-stringMap.printMap();
+// stringMap.printMap();
 function Greeter(greeting) {
     this.greeting = greeting;
 }
